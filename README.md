@@ -2,7 +2,8 @@
 
 ## Required package
 ```bash
-npm i --save-dev @types/jest \
+npm i --save-dev \
+  @types/jest \
   @types/node \
   jest \
   ts-jest \
