@@ -1,9 +1,20 @@
 # typescript-notes
 
-### Declare global typings
-#### typings/index.ts
-##### for the node js
-```ts
+## Required package
+```bash
+npm i --save-dev @types/jest \
+  @types/node \
+  jest \
+  ts-jest \
+  ts-loader \
+  typescript \
+  webpack \
+  webpack-cli
+```
+
+## Backend Node JS
+### typings/index.ts
+```js
 declare global {
   // declare global variables
   var countSkipped: number;
@@ -22,9 +33,10 @@ declare global {
 export { };
 ```
 
+### tsconfig.json
 `tsconfig`, best to use commonjs module for node js code
 
-```ts
+```js
 {
   "compilerOptions": {
     "allowJs": true,
@@ -46,10 +58,52 @@ export { };
 }
 ```
 
+### Webpack
+```
+const path = require('path');
+const webpack = require('webpack');
 
-##### for the browser
+module.exports = {
+  mode: 'production',
+  target: ['node'],
+  entry: './src/index.ts',
+  output: {
+    filename: 'main.js',
+    libraryTarget: 'this',
+    path: path.resolve(__dirname, './'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx|ts|tsx)$/,
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              configFile: 'tsconfig.json',
+            },
+          },
+        ],
+        exclude: /node_modules/,
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    alias: {
+      src: path.resolve(__dirname, 'src'),
+      'package.json': path.resolve(__dirname, 'package.json'),
+    },
+  },
+};
+
+```
+
+
+## Backend Node JS
+### typings/index.ts
 Override global objects
-```ts
+```js
 import Electron from 'electron';
 declare global {
   interface Window {
@@ -61,7 +115,8 @@ declare global {
 }
 ```
 
-For frontend code, use ``
+### tsconfig.json
+For frontend code, use `esNext` for module
 
 ```js
 {
