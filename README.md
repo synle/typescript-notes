@@ -105,7 +105,7 @@ module.exports = {
 
 
 ## Frontend Node JS
-### typings/index.ts
+### index.d.ts
 Override global objects
 ```js
 import Electron from 'electron';
