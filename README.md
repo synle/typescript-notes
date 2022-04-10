@@ -105,18 +105,21 @@ module.exports = {
 
 
 ## Frontend Node JS
-### index.d.ts
+### typings/index.ts
 Override global objects
 ```js
-import Electron from 'electron';
 declare global {
+  type AppEnv = {
+    APP_MODE: string;
+    APP_VERSION: string;
+  };
+
   interface Window {
-    isElectron: boolean;
-    toggleElectronMenu: (visible: boolean, menus: any[]) => void;
-    openBrowserLink: (link: string) => void;
-    ipcRenderer?: Electron.IpcRenderer;
+    appEnv:AppEnv
   }
 }
+
+export {};
 ```
 
 ### tsconfig.json
