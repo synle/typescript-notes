@@ -221,6 +221,11 @@ module.exports = {
 
 ### Theme Provider
 
+#### MUI 4.0 Theme Example Creator
+
+Follow this: https://bareynol.github.io/mui-theme-creator/
+
+#### MUI 5.0 Theme Example
 ```
 import { Box } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
