@@ -217,3 +217,109 @@ module.exports = {
   },
 };
 ```
+## MUI
+
+### Theme Provider
+
+```
+import { Box } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+type AppThemeProviderProps = {
+  children: React.ReactNode;
+};
+
+export default function AppThemeProvider(props: AppThemeProviderProps) {
+  const theme = createTheme({
+    palette: {
+      // TODO: support dark mode
+      mode: localStorage.getItem('theme') === 'dark' ? 'dark' : 'light',
+    },
+    components: {
+      MuiButtonBase: {
+        defaultProps: {
+          disableRipple: true,
+        },
+      },
+      MuiButton: {
+        defaultProps: {
+          size: 'small',
+        },
+      },
+      MuiButtonGroup: {
+        defaultProps: {
+          size: 'small',
+        },
+      },
+      MuiCheckbox: {
+        defaultProps: {
+          size: 'small',
+        },
+      },
+      MuiFab: {
+        defaultProps: {
+          size: 'small',
+        },
+      },
+      MuiFormControl: {
+        defaultProps: {
+          size: 'small',
+          margin: 'dense',
+        },
+      },
+      MuiFormHelperText: {
+        defaultProps: { margin: 'dense' },
+      },
+      MuiIconButton: {
+        defaultProps: {
+          size: 'small',
+        },
+      },
+      MuiInputBase: {
+        defaultProps: { margin: 'dense' },
+      },
+      MuiInputLabel: {
+        defaultProps: { margin: 'dense' },
+      },
+      MuiRadio: {
+        defaultProps: {
+          size: 'small',
+        },
+      },
+      MuiSwitch: {
+        defaultProps: {
+          size: 'small',
+        },
+      },
+      MuiTextField: {
+        defaultProps: {
+          margin: 'dense',
+          size: 'small',
+        },
+      },
+      MuiTooltip: {
+        defaultProps: {
+          arrow: true,
+        },
+      },
+    },
+  });
+
+  theme.palette.info.dark = '#031e4a';
+
+  return (
+    <ThemeProvider theme={theme}>
+      <Box
+        sx={{
+          bgcolor: 'background.default',
+          color: 'text.primary',
+          minHeight: '100vh',
+        }}
+      >
+        {props.children}
+      </Box>
+    </ThemeProvider>
+  );
+}
+
+```
