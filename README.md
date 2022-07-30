@@ -364,3 +364,7 @@ export type User = z.infer<typeof userValidator>;
 // to parse 
 userValidator.parse(some_object); // will throw error if not conformed
 ```
+
+
+#### Animation library
+https://auto-animate.formkit.com/
