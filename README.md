@@ -346,3 +346,21 @@ https://stackoverflow.com/questions/58123398/when-to-use-jsx-element-vs-reactnod
 - ReactElement : is a react component with props
 - ReactNode : generic type for ReactElement / String / undefined / nulll, etc...
 - JSX.Element is a generic type that can be implemented by any library. For example preact / react can implement this.
+
+### Zod validator
+
+```typescript
+import z from 'zod';
+
+export const userValidator = z.object({
+  id: z.string(),
+  email: z.string().email().optional(),
+  name: z.string().min(1).max(25)
+})
+
+export type User = z.infer<typeof userValidator>;
+
+
+// to parse 
+userValidator.parse(some_object); // will throw error if not conformed
+```
