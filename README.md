@@ -338,3 +338,11 @@ Regex:
 Replace:
 (props:\1) : JSX.Element | null
 ```
+
+
+#### JSX.Element vs ReactNode vs ReactElement
+https://stackoverflow.com/questions/58123398/when-to-use-jsx-element-vs-reactnode-vs-reactelement
+
+- ReactElement : is a react component with props
+- ReactNode : generic type for ReactElement / String / undefined / nulll, etc...
+- JSX.Element is a generic type that can be implemented by any library. For example preact / react can implement this.
