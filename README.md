@@ -328,3 +328,13 @@ export default function AppThemeProvider(props: AppThemeProviderProps) {
 }
 
 ```
+
+
+#### Sublime Regex to Replace Props for React Component
+```
+Regex: 
+\(props\:([ a-zA-Z0-9]+)\)
+
+Replace:
+(props:\1) : JSX.Element | null
+```
